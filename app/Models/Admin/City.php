@@ -14,7 +14,12 @@ class City extends Model
         'city_name',
         'status'
     ];
+    /* Fetch all states */
     public function state() {
         return $this->belongsTo(State::class);
+    }
+    /* Fetch all active cities records by scope */
+    public function scopeActive($query) {
+        return $query->where('status',1);
     }
 }

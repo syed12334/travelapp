@@ -11,4 +11,5 @@ class Room_category extends Model
         'id',
         'room_uuid'
     ];
+    
 }

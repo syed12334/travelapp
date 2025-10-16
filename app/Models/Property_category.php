@@ -12,4 +12,5 @@ class Property_category extends Model
         'status',
         'pcamenity_uuid'
     ];
+     public $timestamps = false;
 }

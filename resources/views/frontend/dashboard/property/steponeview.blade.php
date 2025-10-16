@@ -1,6 +1,9 @@
+
 @extends('layouts.dashboard')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
        <main id="main">
                     <section class="profile-dashboard">
                         
@@ -15,11 +18,13 @@
                         <li></li>
                         <li></li>   
                         <li></li> 
+                        <li></li> 
                    
               
             </ul>
                     <div id="step1">
-                            @include('frontend.dashboard.property.step1',['property_category'=>$property_category])
+                            {{-- @include('frontend.dashboard.property.step1',['property_category'=>$property_category]) --}}
+                            <x-step-one  :pcategory="$property_category" :state="$states" :city="$cities"/>
                     </div>
         </div>
 
@@ -74,7 +79,16 @@
                     },
                     landline_no: {
                         number: true 
-					} 
+					},
+                    state : {
+                        required:true
+                    },
+                    city : {
+                        required:true
+                    },
+                    postal_address : {
+                        required:true
+                    },
 				},
 				messages: {
 					email: {
@@ -108,8 +122,16 @@
                     },
                      landline_no : {
                         integer:"Landline no is required"
+                    },
+                    state : {
+                        required:"Please select state"
+                    },
+                    city : {
+                        required:"Please select city"
+                    },
+                    postal_address : {
+                        required:"Please enter postal address"
                     }
-
 				},
 				submitHandler: function (form) {
 					var formData = new FormData(form);
@@ -183,6 +205,27 @@
                 
 			});
         }
+     
+        /* Fetch city by city*/
+        $(document).on("change","#state",function(){
+            var state = $(this).val();
+            $.ajax({
+                url :"{{ route('getCity'); }}",
+                method:"post",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    state:state
+                },
+                dataType:"json",
+                success:function(res) {
+                    if(res.status ==true) {
+                        $("#city").html(res.city);
+                    }
+                }
+            });
+        });
 
        
     </script>

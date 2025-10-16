@@ -89,7 +89,7 @@
                 <form action="{{ route('pmultipleAmenityDelete') }}" method="post">
                     @csrf
                     <div class="card-trash">
-                        <i class="fa fa-trash" title="Delete Amenities"></i>
+                        <button type="submit"><i class="fa fa-trash" title="Delete Amenities"></i></button>
                     </div>
                     <div class="table-responsive" id="amenityListtable">
                         @include('backed.property_amenity.pamenitydata',['amenity'=>$amenity]);
@@ -141,7 +141,10 @@ $.ajaxSetup({
 });
 /* Clear form on click*/ 
 $(document).on("click",".clearform",function() {
+     $("#amenityForm").attr('action',"{{ route('pastore'); }}");
+        $("#categorySubmitButton").text('Add Amenity');
     $("#amenityForm")[0].reset();
+    $("#modalTitle").text('Add Amenity');
 });
 $(function () {
  const $form           = $('#amenityForm');

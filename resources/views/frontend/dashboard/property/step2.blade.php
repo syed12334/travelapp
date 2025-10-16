@@ -67,7 +67,7 @@
               <div class="col-xs-12 col-sm-4 col-lg-4">
                 <div class="form-group">
                     <label>Upload Profile Photo <span style="color:red">*</span></label>
-                    <input type="file" name="profile_img" />
+                    <input type="file" name="profile_img" class="form-control" />
                     <span id="error-profile_img"></span>
                 </div>
             </div>

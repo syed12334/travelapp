@@ -11,4 +11,8 @@ class State extends Model
         'state_uuid',
         'name'
     ];
+     /* Fetch all active states records by scope */
+    public function scopeActive($query) {
+        return $query->where('status',1);
+    }
 }

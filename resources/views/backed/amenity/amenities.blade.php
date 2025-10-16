@@ -88,7 +88,7 @@
                 <form action="{{ route('multipleAmenityDelete') }}" method="post">
                     @csrf
                     <div class="card-trash">
-                        <i class="fa fa-trash" title="Delete Amenities"></i>
+                        <button type="submit"><i class="fa fa-trash" title="Delete Amenities"></i></button>
                     </div>
                     <div class="table-responsive" id="amenityListtable">
                         @include('backed.amenity.amenitydata',['amenity'=>$amenity]);

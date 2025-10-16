@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->string('youtube_link')->nullable();
-            $table->foreign('property_id')->references('property_id')->on('properties')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 

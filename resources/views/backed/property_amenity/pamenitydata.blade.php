@@ -50,7 +50,7 @@
                             </a>
                         @endif
 
-                        <a class="me-2 p-2 mb-0" onclick="editAmenity({{ $amen->id }})" title="Edit Amenity">
+                        <a class="me-2 p-2 mb-0" onclick="editAmenity({{ $amen->id; }})" title="Edit Amenity">
                             <i class="ti ti-edit"></i>
                         </a>
                         <a data-status="2" data-id="{{ $amen->id }}" data-msg="Are you sure you want to delete this amenity?"  class="p-2 mb-0 statusChange" title="Delete Property Amenity">

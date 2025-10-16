@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
-
+@push('style')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+@endpush
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -24,6 +26,7 @@
                         <li ></li>
                         <li class="active"></li>   
                         <li></li> 
+                        <li></li> 
                    
               
             </ul>
@@ -39,7 +42,7 @@
 
 @push('script')
           <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-            
+     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>       
 <script>
 
         $.ajaxSetup({
@@ -48,16 +51,50 @@
 				}
 			});
 
+            
+
 			$(document).ready(function() {
+                /* Summernote*/
+                 $('#rate_inclusion').summernote({
+                    height: 200,
+                 });
               /* Property photos & videos details*/
               $("#propertyRoomCategory").validate({
                 ignore: [],
                 rules: {
-                    "room_category[]": { required:true}
+                    "room_category[]": { required:true},
+                    "quad_room[]": {required:true},
+                    "no_of_rooms[]" :{required:true},
+                    "room_img[]":{required:true},
+                    "price[]":{required:true},
+                    "tax[]" :{required:true},
+                    "discount[]":{required:true},
+                    "rate_inclusion[]":{required:true},
                 },
                 messages: {
                     "room_category[]": {
-                        required: "Please select atleast one room category",
+                        required: "Please select room category",
+                    },
+                    "quad_room[]": {
+                        required: "Please select occupancy",
+                    },
+                    "no_of_rooms[]": {
+                        required: "Enter no of rooms",
+                    },
+                    "room_img[]": {
+                        required: "Please select room image",
+                    },
+                    "price[]": {
+                        required: "Please enter price",
+                    },
+                    "tax[]": {
+                        required: "Please enter tax",
+                    },
+                    "discount[]": {
+                        required: "Please enter discount",
+                    },
+                    "rate_inclusion[]": {
+                        required: "Please enter rate inclusion",
                     }
                 },
                 submitHandler: function (form) {
@@ -158,22 +195,33 @@
             
         });
       /* Append Room amenities */
-        var i =1;
+        var i =1222;
         function appendRoomLink() {
             i++;
             var data = "<div class='row' id='removeY"+i+"' style='margin-top:10px'>";
-                data +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="form-group"><select name="room_category['+i+']" data-index="'+i+'" class="form-control rooms" id="cateroom'+i+'">'+$("#roomCategory").html()+'</select></div></div>';
-                data +='<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px"><button class="btn btn-primary" type="button" onclick="return appendRoomLink()"><i class="fa fa-plus"></i></button><button class="btn btn-danger" type="button" onclick="return removeRoom('+i+')" style="margin-left:5px"><i class="fa fa-minus"></i></button></div>';
-                data +='<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7"></div>';
+                data +='<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:0px"><button class="btn btn-danger" type="button" onclick="return removeRoom('+i+')" style="margin-left:5px;float:right;"> <i class="fa fa-minus"></i> Remove</button><button class="btn btn-primary" type="button" onclick="return appendRoomLink()" style="float:right;margin-right: 4px"><i class="fa fa-plus"></i> Add More </button></div><div class="clearfix"></div>';               
+                data +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="form-group"> <label>Room Categories<span style="color:red">*</span></label><select name="room_category['+i+']" data-index="'+i+'" class="form-control rooms" id="cateroom'+i+'">'+$("#roomCategory").html()+'</select></div></div>';
+                data +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="form-group"><label>Mention no of rooms  <span style="color:red">*</span></label><input type="number" class="form-control" name="no_of_rooms['+i+']"/><span id="error-no_of_rooms" style="color:red"></span></div></div>';
+                data +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="padding-right:0px"><div class="form-group"><label>Mention no of rooms  <span style="color:red">*</span></label><input type="number" class="form-control" name="no_of_rooms['+i+']"/><span id="error-no_of_rooms" style="color:red"></span></div></div>';
+                data +='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="form-group"><label>Price <span style="color:red">*</span></label><input type="number" name="price['+i+']" class="form-control" /><span id="error-price" style="color:red"></span></div></div>';
                 data +='<div class="clearfix"></div>';
+                data +='<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><div class="form-group"><label>Tax <span style="color:red">*</span></label><input type="number" name="tax['+i+']" class="form-control" /><span id="error-tax" style="color:red"></span></div></div>';
+                data +='<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><div class="form-group"><label>Discount <span style="color:red">*</span></label><input type="number" name="discount['+i+']" class="form-control" /><span id="error-discount" style="color:red"></span></div></div>';
+                data +='<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><div class="form-group"><label>Room Image <span style="color:red">*</span></label><input type="file" name="room_img['+i+']"  class="form-control" accept=".jpg,.jpeg,.png,.PNG,.JPG,.JPEG"/><span id="error-room_img" style="color:red"></span></div></div><div class="clearfix"></div>';
+                data +='<div class="col-xs-12 col-md-12 col-lg-12 col-xl-12"><div class="form-group"><label>Rate Inclusion <span style="color:red">*</span></label><textarea name="rate_inclusion['+i+']" class="form-control" id="rate_inclusion'+i+'"></textarea><span id="error-rate_inclusion" style="color:red"></span></div></div><div class="clearfix"></div>';
                 data +='<div class="row" id="getAmenities'+i+'"></div>';
             data +="</div>";
-            $('select').select2();
+            $('#cateroom'+i).select2();
+             /* Summernote*/
+                 $('#rate_inclusion'+i).summernote({
+                    height: 200
+                 });
             $('#appendRoomCate').append(data);
         }
         /* Remove room categories */
         function removeRoom(id) {
                 $("#removeY"+id).fadeOut(500, function () { $("#removeY"+id).remove(); });
+                $("#getAmenities"+id).fadeOut(500, function () { $("#getAmenities"+id).remove(); });
         }
         
     </script>

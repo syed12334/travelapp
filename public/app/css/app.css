@@ -9243,7 +9243,7 @@ input[type=url],
 input[type=search],
 input[type=tel],
 input[type=color] {
-  border: 1px solid #aaa;
+  border: 1px solid #e0e0e5;
   outline: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -9397,7 +9397,8 @@ p {
 }
 
 label.error {
-  color: red;
+  color: #E35A49;
+  font-size:12px!important;
 }
 
 .text-white {
@@ -11715,7 +11716,7 @@ input:-internal-autofill-selected {
     background-color: #fff !important;
 }
 select {
-    padding:17px!important
+    padding:17px
 }
 
 #multistep_form {
@@ -11734,7 +11735,7 @@ select {
 }
 #progress_header li {
     list-style-type: none;
-    width: 16.66%;
+    width: 14%;
     float: left;
     position: relative;
     font-size: 16px;
@@ -11745,7 +11746,7 @@ select {
     text-align:center
 }
 #progress_header li:after {
-        width: 160px;
+        width: 130px;
     line-height: 30px;
     display: block;
     font-size: 12px;
@@ -11755,6 +11756,8 @@ select {
     margin: 0 auto;
     background-repeat: no-repeat;
     font-weight: bold;
+    position:relative;
+    left:15px
 }
 #progress_header li:nth-child(1):after {
     content: "PROPERTY DETAILS";
@@ -11772,7 +11775,10 @@ select {
     content: "ROOM CATEGORIES";
 }
 #progress_header li:nth-child(6):after {
-    content: "PRICING AVAIL";
+    content: "HOUSE RULES";
+}
+#progress_header li:nth-child(7):after {
+    content: "NEAR BY";
 }
 #progress_header li:before {
     content: '';
@@ -11851,4 +11857,15 @@ p.nxt-prev-button {
 .action-button:hover, 
 .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #6ce199;
+}
+input.error {
+  border:1px solid #E35A49!important;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+input::placeholder {
+  font-size: 12px!important;
 }

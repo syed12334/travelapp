@@ -52,7 +52,7 @@
                 </div>
             <div class="clearfix"></div>
                
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="form-group">
                         <label>Property Hosted <span style="color:red">*</span></label>
                         <select name="property_hosted" class="form-control">
@@ -63,7 +63,7 @@
                         <span id="error-property_hosted"></span>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="form-group">
                        <label>Host stay property <span style="color:red">*</span></label>
                         <select name="host_stay_property" class="form-control">
@@ -75,24 +75,47 @@
                         <span id="error-host_stay_propertye"></span>
                     </div>
                 </div>
-                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="form-group">
+                  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  a  <div class="form-group">
                         <label>Email <span style="color:red">*</span></label>
                         <input type="text" name="email" placeholder="Enter Email" @if($step1 && is_array($step1)) value="{{ $step1['email']}}" @endif>
                         <span id="error-email"></span>
                     </div>
                 </div>
+                   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group">
+                        <label>State <span style="color:red">*</span></label>
+                        <select name="state" class="form-control" id="state">
+                            <option value="">Select state</option>
+                            @if(count($states) >0) 
+                                @foreach ($states as $k =>$state)
+                                    <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        <span id="error-state"></span>
+                    </div>
+                </div>
                 <div class="clearfix"></div>
-                  
+                  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group">
+                        <label>City <span style="color:red">*</span></label>
+                        <select name="city" class="form-control" id="city">
+                            <option value="">Select city</option>
+                            
+                        </select>
+                        <span id="error-state"></span>
+                    </div>
+                </div>
               
-                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="form-group">
                         <label>Mobile No <span style="color:red">*</span></label>
                         <input type="number" name="mobile_no" placeholder="Enter Mobile No" maxlength="12" @if($step1 && is_array($step1)) value="{{ $step1['mobile_no']}}" @endif>
                         <span id="error-mobile_no"></span>
                     </div>
                 </div>
-                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="form-group">
                         <label>Whatsapp no </label>
                         <input type="number" name="whatsapp_no" placeholder="Enter Whatsapp No" maxlength="12" @if($step1 && is_array($step1)) value="{{ $step1['whatsapp_no']}}" @endif>
@@ -100,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="form-group">
                         <label>Landline no </label>
                         <input type="number" name="landline_no" placeholder="Enter Landline No" maxlength="8" @if($step1 && is_array($step1)) value="{{ $step1['landline_no']}}" @endif>
@@ -108,7 +131,14 @@
                     </div>
                 </div>  
                 <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label>Postal Address <span style="color:red">*</span></label>
+                        <textarea cols="2" rows="2" class="form-control" name="postal_address"></textarea>
+                        <span id="error-property_postal_address"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
                         <label>Map Location <span style="color:red">*</span></label>
                         <textarea cols="2" rows="2" class="form-control" name="property_location">@if($step1 && is_array($step1)) {{ $step1['property_location']}} @endif</textarea>

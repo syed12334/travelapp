@@ -34,7 +34,7 @@ Route::get('logout',[UserController::class,'logout'])->name('logout');
 Route::middleware(["authenticate"])->group(function() {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('property-add',[PropertyController::class,'index'])->name('property-add');
-    Route::post('filepond',[PropertyController::class,'filepond'])->name('filepond');
+    Route::post('getCity',[PropertyController::class,'getCity'])->name('getCity');
     /* Step 1 route with validation middleware */
     Route::middleware('propertysteps:step1')->group(function() {
          Route::get('steponeview',[PropertyController::class,'steponeview'])->name('steponeview');
@@ -61,11 +61,20 @@ Route::middleware(["authenticate"])->group(function() {
         Route::post('step5',[PropertyController::class,'step5'])->name('step5');
         Route::post('getAmenitiesAjax',[PropertyController::class,'getAmenitiesAjax'])->name('getAmenitiesAjax');
     });
-    /* Step 5 route with validation middleware */
+    /* Step 6 route with validation middleware */
     Route::middleware('propertysteps:step6')->group(function() {
         Route::get('stepsixview',[PropertyController::class,'stepsixview'])->name('stepsixview');
         Route::post('step6',[PropertyController::class,'step6'])->name('step6');
     });
+    /* Step 7 route with validation middleware */
+    Route::middleware('propertysteps:step7')->group(function() {
+        Route::get('stepsevenview',[PropertyController::class,'stepsevenview'])->name('stepsevenview');
+        Route::post('step7',[PropertyController::class,'step7'])->name('step7');
+    });
+    /* Property thankyou page */
+    Route::get('property-thankyou',[PropertyController::class,'thankyou'])->name('property-thankyou');
+    /* Fetch all property details */
+    Route::get('fetchProperty',[PropertyController::class,'fetchProperty'])->name('fetchProperty');
 });
 
 /* Admin guest routes */

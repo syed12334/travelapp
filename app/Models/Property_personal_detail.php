@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 
 class Property_personal_detail extends Model
 {
+    protected $table = 'property_personal_details';
      public $fillable = [
         'property_id',
         'name_of_host',

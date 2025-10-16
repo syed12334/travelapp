@@ -7,7 +7,7 @@
                                     <div style="float:left"><input type="checkbox" name="room_amenity[{{ $index }}][]" value="{{ $ramenity->id }}" /> 
                                         <span style="margin-right:10px;font-size:12px;color:#000">{{ $ramenity->amenity_text }} </span>
                                     </div> 
-                                    <select name="no_of_am[{{ $index }}][]" class="form-control" style="width:50px;height:20px;padding:5px">
+                                    <select name="room_category_no_of_am[{{ $index }}][]" class="form-control" style="width:50px;padding:5px">
                                         <option value="">Select</option>
                                         @for($i =0;$i <=10;$i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
